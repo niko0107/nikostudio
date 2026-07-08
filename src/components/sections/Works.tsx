@@ -48,6 +48,7 @@ function ImagePanel({
         src={src}
         alt={alt}
         fill
+        sizes="(max-width: 896px) 60vw, 540px"
         className={`object-cover ${position ?? ''} transition-transform duration-700 ease-out group-hover:scale-[1.06]`}
       />
       {/* hover light sweep */}

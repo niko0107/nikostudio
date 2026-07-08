@@ -80,12 +80,13 @@ function RotatableLaptop() {
       transition={{ duration: 0.3 }}
     >
       <Image
-        src="/laptop-floating.png"
+        src="/laptop-floating.webp"
         alt="Laptop"
         width={680}
-        height={440}
+        height={453}
+        sizes="(max-width: 640px) 320px, (max-width: 768px) 440px, (max-width: 1024px) 560px, 680px"
         className="w-full h-auto drop-shadow-2xl pointer-events-none"
-        priority
+        preload
         draggable={false}
       />
     </motion.div>

@@ -1,32 +1,33 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useEffect } from 'react'
+import Image from 'next/image'
 
 const row1Images = [
-  'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif',
-  'https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif',
-  'https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif',
-  'https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif',
-  'https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif',
-  'https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif',
-  'https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif',
-  'https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif',
-  'https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif',
-  'https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif',
+  '/marquee/space-voyage.jpg',
+  '/marquee/codenest.jpg',
+  '/marquee/vex-ventures.jpg',
+  '/marquee/stellar-ai-v2.jpg',
+  '/marquee/asme.jpg',
+  '/marquee/transform-data.jpg',
+  '/marquee/vitara.jpg',
+  '/marquee/terra.jpg',
+  '/marquee/skyelite.jpg',
+  '/marquee/aethera.jpg',
+  '/marquee/designpro.jpg',
 ]
 
 const row2Images = [
-  'https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif',
-  'https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif',
-  'https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif',
-  'https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif',
-  'https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif',
-  'https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif',
-  'https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif',
-  'https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif',
-  'https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif',
-  'https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif',
+  '/marquee/stellar-ai.jpg',
+  '/marquee/xportfolio.jpg',
+  '/marquee/orbit-web3.jpg',
+  '/marquee/nexora.jpg',
+  '/marquee/evr-ventures.jpg',
+  '/marquee/planet-orbit.jpg',
+  '/marquee/new-era.jpg',
+  '/marquee/wealth.jpg',
+  '/marquee/luminex.jpg',
+  '/marquee/celestia.jpg',
 ]
 
 const tripled1 = [...row1Images, ...row1Images, ...row1Images]
@@ -34,18 +35,28 @@ const tripled2 = [...row2Images, ...row2Images, ...row2Images]
 
 export default function Marquee() {
   const sectionRef = useRef<HTMLElement>(null)
-  const [offset, setOffset] = useState(200)
+  const row1Ref = useRef<HTMLDivElement>(null)
+  const row2Ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const onScroll = () => {
+    let ticking = false
+    const update = () => {
+      ticking = false
       const el = sectionRef.current
-      if (!el) return
+      if (!el || !row1Ref.current || !row2Ref.current) return
       const sectionTop = el.getBoundingClientRect().top + window.scrollY
-      const next = (window.scrollY - sectionTop + window.innerHeight) * 0.3
-      setOffset(next)
+      const offset = (window.scrollY - sectionTop + window.innerHeight) * 0.3
+      row1Ref.current.style.transform = `translate3d(${offset - 200}px, 0, 0)`
+      row2Ref.current.style.transform = `translate3d(${-(offset - 200)}px, 0, 0)`
+    }
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true
+        requestAnimationFrame(update)
+      }
     }
     window.addEventListener('scroll', onScroll, { passive: true })
-    onScroll()
+    update()
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
@@ -62,22 +73,15 @@ export default function Marquee() {
     >
       <div className="flex flex-col gap-3">
         {/* Row 1 — moves right */}
-        <div
-          className="flex gap-3"
-          style={{
-            transform: `translateX(${offset - 200}px)`,
-            willChange: 'transform',
-          }}
-        >
+        <div ref={row1Ref} className="flex gap-3" style={{ willChange: 'transform' }}>
           {tripled1.map((src, i) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
+            <Image
               key={i}
               src={src}
               alt=""
-              loading="lazy"
               width={340}
               height={218}
+              sizes="340px"
               className="rounded-2xl object-cover flex-shrink-0 transition-[transform,box-shadow] duration-500 ease-out hover:scale-[1.03] hover:shadow-[0_16px_48px_rgba(24,50,50,0.18)]"
               style={{ width: 340, height: 218 }}
             />
@@ -85,22 +89,15 @@ export default function Marquee() {
         </div>
 
         {/* Row 2 — moves left */}
-        <div
-          className="flex gap-3"
-          style={{
-            transform: `translateX(${-(offset - 200)}px)`,
-            willChange: 'transform',
-          }}
-        >
+        <div ref={row2Ref} className="flex gap-3" style={{ willChange: 'transform' }}>
           {tripled2.map((src, i) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
+            <Image
               key={i}
               src={src}
               alt=""
-              loading="lazy"
               width={340}
               height={218}
+              sizes="340px"
               className="rounded-2xl object-cover flex-shrink-0 transition-[transform,box-shadow] duration-500 ease-out hover:scale-[1.03] hover:shadow-[0_16px_48px_rgba(24,50,50,0.18)]"
               style={{ width: 340, height: 218 }}
             />

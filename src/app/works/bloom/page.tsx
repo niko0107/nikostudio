@@ -200,7 +200,8 @@ export default function BloomPage() {
             src="/bloom-styling.jpg"
             alt="Bloom Hair Salon スタイリングエリア"
             fill
-            priority
+            preload
+            sizes="100vw"
             className="object-cover object-center"
           />
           {/* Warm overlay — 全体を淡くヴェールで包み文字を立たせる */}
@@ -297,6 +298,7 @@ export default function BloomPage() {
                   src="/bloom-reception.jpg"
                   alt="Bloom 受付カウンター"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover object-left transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                 />
               </div>
@@ -364,6 +366,7 @@ export default function BloomPage() {
                   src="/bloom-styling.jpg"
                   alt="スタイリングエリア — バックライトミラーと施術チェア"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                 />
               </div>
@@ -377,6 +380,7 @@ export default function BloomPage() {
                     src="/bloom-wash.jpg"
                     alt="シャンプーブース"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                   />
                 </div>
@@ -387,6 +391,7 @@ export default function BloomPage() {
                     src="/bloom-reception.jpg"
                     alt="受付カウンター"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover object-left transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                   />
                 </div>

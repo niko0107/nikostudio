@@ -10,7 +10,7 @@ const notoSansJP = Noto_Sans_JP({
 })
 
 const shipporiMincho = Shippori_Mincho({
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['400', '500', '700'],
   subsets: ['latin'],
   variable: '--font-shippori',
   display: 'swap',

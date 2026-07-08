@@ -40,8 +40,7 @@ export default function CursorGlow() {
         height: 600,
         borderRadius: '50%',
         background:
-          'radial-gradient(circle, rgba(102,217,212,0.14) 0%, rgba(155,184,240,0.08) 40%, rgba(255,255,255,0) 70%)',
-        mixBlendMode: 'soft-light',
+          'radial-gradient(circle, rgba(102,217,212,0.10) 0%, rgba(155,184,240,0.06) 40%, rgba(255,255,255,0) 70%)',
         willChange: 'transform',
       }}
     />

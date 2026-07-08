@@ -207,7 +207,8 @@ export default function TrattoriaPage() {
             src="/trattoria-dining.jpg"
             alt="Trattoria Sole 店内 — 灯りに包まれたダイニング"
             fill
-            priority
+            preload
+            sizes="100vw"
             className="object-cover object-center"
           />
           {/* 下に向かって暗くフェードし文字を立たせる */}
@@ -304,6 +305,7 @@ export default function TrattoriaPage() {
                   src="/trattoria-kitchen.jpg"
                   alt="薪窯とオープンキッチン"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                 />
               </div>
@@ -333,6 +335,7 @@ export default function TrattoriaPage() {
                   src={signatureMenu[0].image}
                   alt={signatureMenu[0].name}
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                 />
               </div>
@@ -361,6 +364,7 @@ export default function TrattoriaPage() {
                       src={item.image}
                       alt={item.name}
                       fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                     />
                   </div>
@@ -400,6 +404,7 @@ export default function TrattoriaPage() {
                   src="/trattoria-table.jpg"
                   alt="石壁とテーブルセッティング"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                 />
               </div>
@@ -413,6 +418,7 @@ export default function TrattoriaPage() {
                     src="/trattoria-entrance.jpg"
                     alt="夜のエントランス"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                   />
                 </div>
@@ -423,6 +429,7 @@ export default function TrattoriaPage() {
                     src="/trattoria-kitchen.jpg"
                     alt="薪窯のあるオープンキッチン"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                   />
                 </div>
