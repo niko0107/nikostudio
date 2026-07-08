@@ -115,14 +115,14 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
             alt={project.name}
             position={project.positions[0]}
             sizes="(max-width: 640px) 46vw, (max-width: 896px) 40vw, 340px"
-            className="w-1/2 sm:w-auto aspect-[4/3] sm:aspect-auto sm:h-[clamp(110px,12vw,170px)]"
+            className="w-1/2 sm:w-auto aspect-[16/9] sm:aspect-auto sm:h-[clamp(110px,12vw,170px)]"
           />
           <ImagePanel
             src={project.images[1]}
             alt={project.name}
             position={project.positions[1]}
             sizes="(max-width: 640px) 46vw, (max-width: 896px) 40vw, 340px"
-            className="w-1/2 sm:w-auto aspect-[4/3] sm:aspect-auto sm:h-[clamp(140px,17vw,250px)]"
+            className="w-1/2 sm:w-auto aspect-[16/9] sm:aspect-auto sm:h-[clamp(140px,17vw,250px)]"
           />
         </div>
       </div>
