@@ -95,34 +95,34 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         </a>
       </div>
 
-      {/* Image grid — mobile: landscape stack / sm+: 2-col editorial grid */}
-      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-        {/* Main image — first on mobile (wide), right column on desktop (tall) */}
-        <div className="order-1 sm:order-2 sm:flex-1">
-          <ImagePanel
-            src={project.images[2]}
-            alt={project.name}
-            position={project.positions[2]}
-            sizes="(max-width: 640px) 92vw, (max-width: 896px) 55vw, 500px"
-            className="aspect-[16/9] sm:aspect-auto sm:h-[clamp(260px,30vw,440px)]"
-          />
-        </div>
-
-        {/* Sub images — side-by-side landscape on mobile, stacked column on desktop */}
-        <div className="order-2 sm:order-1 flex flex-row sm:flex-col gap-3 sm:gap-4 sm:w-[40%]">
+      {/* Image grid — mobile: 3-col horizontal row / sm+: 2-col editorial grid */}
+      <div className="flex flex-row sm:flex-row gap-3 sm:gap-4">
+        {/* Sub images — 1/3 width each on mobile, stacked column on desktop */}
+        <div className="flex flex-row sm:flex-col gap-3 sm:gap-4 w-2/3 sm:w-[40%]">
           <ImagePanel
             src={project.images[0]}
             alt={project.name}
             position={project.positions[0]}
-            sizes="(max-width: 640px) 46vw, (max-width: 896px) 40vw, 340px"
-            className="w-1/2 sm:w-auto aspect-[16/9] sm:aspect-auto sm:h-[clamp(110px,12vw,170px)]"
+            sizes="(max-width: 640px) 30vw, (max-width: 896px) 40vw, 340px"
+            className="w-1/2 sm:w-auto aspect-[4/3] sm:aspect-auto sm:h-[clamp(110px,12vw,170px)]"
           />
           <ImagePanel
             src={project.images[1]}
             alt={project.name}
             position={project.positions[1]}
-            sizes="(max-width: 640px) 46vw, (max-width: 896px) 40vw, 340px"
-            className="w-1/2 sm:w-auto aspect-[16/9] sm:aspect-auto sm:h-[clamp(140px,17vw,250px)]"
+            sizes="(max-width: 640px) 30vw, (max-width: 896px) 40vw, 340px"
+            className="w-1/2 sm:w-auto aspect-[4/3] sm:aspect-auto sm:h-[clamp(140px,17vw,250px)]"
+          />
+        </div>
+
+        {/* Main image — 1/3 width on mobile, right column on desktop (tall) */}
+        <div className="w-1/3 sm:w-auto sm:flex-1">
+          <ImagePanel
+            src={project.images[2]}
+            alt={project.name}
+            position={project.positions[2]}
+            sizes="(max-width: 640px) 30vw, (max-width: 896px) 55vw, 500px"
+            className="h-full aspect-auto sm:aspect-auto sm:h-[clamp(260px,30vw,440px)]"
           />
         </div>
       </div>
