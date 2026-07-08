@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #F2FAFA;
+  --color-surface: #FFFFFF;
+  --color-ink: #183232;
+  --color-muted: #66757D;
+  --color-accent: #66D9D4;
+
+  --font-sans: var(--font-noto), 'Noto Sans JP', sans-serif;
+  --font-display: var(--font-shippori), 'Shippori Mincho', serif;
+}
+
+@utility text-display-xl {
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+@utility text-display-lg {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+@utility text-display-md {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+@utility text-body-lg {
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+@utility text-body-md {
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+@utility text-caption {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+body {
+  background-color: #F2FAFA;
+  color: #183232;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(102, 217, 212, 0.35);
+  color: #183232;
+}
+
+*:focus-visible {
+  outline: 2px solid #66D9D4;
+  outline-offset: 2px;
+}
+
+@utility hero-heading {
+  background: linear-gradient(180deg, #183232 0%, #0d5050 55%, #66D9D4 115%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Iridescent text — for accents on dark sections */
+@utility aurora-text {
+  background: linear-gradient(
+    100deg,
+    #66D9D4 0%,
+    #9BB8F0 30%,
+    #C7B9F5 55%,
+    #66D9D4 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: aurora-shift 8s ease-in-out infinite;
+}
+
+@keyframes aurora-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Soft drifting aurora blobs — GPU-only transforms */
+@keyframes aurora-drift-1 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(6vw, 4vh, 0) scale(1.15); }
+  66% { transform: translate3d(-4vw, -3vh, 0) scale(0.95); }
+}
+
+@keyframes aurora-drift-2 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  40% { transform: translate3d(-7vw, 5vh, 0) scale(1.1); }
+  70% { transform: translate3d(5vw, -4vh, 0) scale(1.05); }
+}
+
+@keyframes aurora-drift-3 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(4vw, -6vh, 0) scale(1.2); }
+}
+
+/* Film grain — data-URI SVG noise, tiled */
+@utility noise-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* Frosted glass panel */
+@utility glass-panel {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 1px 2px rgba(24, 50, 50, 0.03),
+    0 8px 40px rgba(24, 50, 50, 0.06);
+}
+
+@utility glass-panel-dark {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(102, 217, 212, 0.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
