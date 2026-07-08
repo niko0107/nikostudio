@@ -54,32 +54,42 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
       style={{ boxShadow: '0 16px 56px rgba(24,50,50,0.10)' }}
     >
       {/* Top row */}
-      <div className="flex items-center justify-between flex-wrap gap-4 mb-4 sm:mb-6">
-        {/* Number */}
-        <span
-          className="font-display font-bold leading-none text-ink/15"
-          style={{ fontSize: 'clamp(2rem, 5vw, 60px)' }}
-        >
-          {project.num}
-        </span>
-
-        {/* Title block */}
-        <div className="flex flex-col flex-1 px-4">
-          <span className="text-muted text-caption uppercase tracking-widest">
-            {project.category}
-          </span>
+      <div className="mb-4 sm:mb-6">
+        <div className="flex items-center gap-3 sm:gap-4">
+          {/* Number */}
           <span
-            className="text-ink font-display font-medium"
-            style={{ fontSize: 'clamp(1.1rem, 1.8vw, 1.5rem)' }}
+            className="font-display font-bold leading-none text-ink/15 shrink-0"
+            style={{ fontSize: 'clamp(2rem, 5vw, 60px)' }}
           >
-            {project.name}
+            {project.num}
           </span>
+
+          {/* Title block */}
+          <div className="flex flex-col flex-1 px-2 sm:px-4 min-w-0">
+            <span className="text-muted text-caption uppercase tracking-widest whitespace-nowrap">
+              {project.category}
+            </span>
+            <span
+              className="text-ink font-display font-medium whitespace-nowrap"
+              style={{ fontSize: 'clamp(1rem, 1.8vw, 1.5rem)' }}
+            >
+              {project.name}
+            </span>
+          </div>
+
+          {/* Live button — desktop only */}
+          <a
+            href={project.href}
+            className="hidden sm:block shrink-0 rounded-full border border-ink/20 text-ink font-medium uppercase tracking-widest px-7 py-2.5 text-sm transition-colors duration-300 hover:bg-ink/5"
+          >
+            Live Project
+          </a>
         </div>
 
-        {/* Live button */}
+        {/* Live button — mobile only */}
         <a
           href={project.href}
-          className="rounded-full border border-ink/20 text-ink font-medium uppercase tracking-widest px-5 py-2 sm:px-7 sm:py-2.5 text-xs sm:text-sm transition-colors duration-300 hover:bg-ink/5"
+          className="sm:hidden mt-3 block text-center rounded-full border border-ink/20 text-ink font-medium uppercase tracking-widest px-5 py-2 text-xs transition-colors duration-300 hover:bg-ink/5"
         >
           Live Project
         </a>
