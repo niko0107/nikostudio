@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { SHOW_BLOOM_SAMPLE } from '@/config/site'
 
 const projects = [
   {
@@ -8,6 +9,7 @@ const projects = [
     href: '/works/bloom',
     images: ['/bloom-wash.jpg', '/bloom-reception.jpg', '/bloom-styling.jpg'],
     positions: ['object-center', 'object-left', 'object-center'],
+    visible: SHOW_BLOOM_SAMPLE,
   },
   {
     num: '02',
@@ -16,6 +18,7 @@ const projects = [
     href: '/works/trattoria',
     images: ['/trattoria-carbonara.jpg', '/trattoria-kitchen.jpg', '/trattoria-dining.jpg'],
     positions: ['object-center', 'object-center', 'object-center'],
+    visible: true,
   },
 ]
 
@@ -47,7 +50,13 @@ function ImagePanel({
   )
 }
 
-function ProjectCard({ project }: { project: (typeof projects)[0] }) {
+function ProjectCard({
+  project,
+  displayNumber,
+}: {
+  project: (typeof projects)[0]
+  displayNumber: string
+}) {
   return (
     <div
       className="relative rounded-[28px] sm:rounded-[32px] md:rounded-[40px] border border-ink/10 bg-white p-4 sm:p-6 md:p-8"
@@ -61,7 +70,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
             className="font-display font-bold leading-none text-ink/15 shrink-0"
             style={{ fontSize: 'clamp(2rem, 5vw, 60px)' }}
           >
-            {project.num}
+            {displayNumber}
           </span>
 
           {/* Title block */}
@@ -145,8 +154,12 @@ export default function Works() {
       </h2>
 
       <div className="max-w-4xl mx-auto flex flex-col gap-8 sm:gap-12 md:gap-16">
-        {projects.map((p) => (
-          <ProjectCard key={p.num} project={p} />
+        {projects.filter((project) => project.visible).map((project, index) => (
+          <ProjectCard
+            key={project.href}
+            project={project}
+            displayNumber={String(index + 1).padStart(2, '0')}
+          />
         ))}
       </div>
     </section>

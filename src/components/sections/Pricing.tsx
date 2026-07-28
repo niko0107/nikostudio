@@ -9,7 +9,7 @@ import { staggerContainer, fadeUp } from '@/lib/animations'
 const plans = [
   {
     name: 'ホームページ制作',
-    price: '¥19,800',
+    price: '¥39,800',
     suffix: '〜',
     priceNote: '税込',
     items: [
@@ -23,7 +23,7 @@ const plans = [
   },
   {
     name: 'ランディングページ',
-    price: '¥29,800',
+    price: '¥25,000',
     suffix: '〜',
     priceNote: '税込',
     items: [
